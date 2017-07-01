@@ -1,12 +1,12 @@
-#pragma once
+﻿#pragma once
 #include "../Scene.h"
 #include "../Sprite.h"
 
-class cTitleScene : public cScene {
-private:
-	cSprite mMessageFade;
+class cMenuScene : public cScene {
+protected:
+	cSprite mColumn;
 public:
-	cTitleScene(iSceneChanger<eScene> *Changer);
+	cMenuScene(iSceneChanger<eScene> *Changer);
 	void Initialize() override;
 	void Finalize() override;
 	void Update() override;

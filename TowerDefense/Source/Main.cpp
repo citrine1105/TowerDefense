@@ -14,7 +14,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	cSceneManager scene;
 	scene.Initialize();
 
-	while (ProcessMessage() == 0 && ClearDrawScreen() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
+	while (ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		scene.Update();
 		scene.Draw();
 		ScreenFlip();
@@ -37,7 +37,7 @@ int Game_Init() {
 	SetDXArchiveKeyString(DX_ARCHIVE_KEY_STRING);	// DXアーカイブキー
 	SetMultiThreadFlag(TRUE);	// マルチスレッド動作有効
 	SetAlwaysRunFlag(TRUE);	// 非アクティブ時も動作
-	SetGraphMode(1280, 720, 32);	// テスト
+	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);	// テスト
 	if (MessageBox(GetMainWindowHandle(), _T("フルスクリーンモードで起動しますか?"), CAPTION_STRING, MB_YESNO | MB_ICONQUESTION) == IDYES) {
 		ChangeWindowMode(FALSE);
 	}

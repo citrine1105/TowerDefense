@@ -1,9 +1,11 @@
 ﻿#include "../Header/SceneManager.h"
+#include "../Header/Scene/Load.h"
 #include "../Header/Scene/Title.h"
+#include "../Header/Scene/Menu.h"
 #include "../Header/Scene/Game.h"
 
 cSceneManager::cSceneManager() : mNextScene(eScene_None) {
-	pScene = static_cast<cScene*>(new cTitleScene(this));
+	pScene = static_cast<cScene*>(new cLoadScene(this));
 }
 
 void cSceneManager::Initialize() {
@@ -19,8 +21,14 @@ void cSceneManager::Update() {
 		pScene->Finalize();
 		delete pScene;
 		switch (mNextScene) {
+		case eScene_Load:
+			pScene = static_cast<cScene*>(new cLoadScene(this));
+			break;
 		case eScene_Title:
 			pScene = static_cast<cScene*>(new cTitleScene(this));
+			break;
+		case eScene_Menu:
+			pScene = static_cast<cScene*>(new cMenuScene(this));
 			break;
 		case eScene_Game:
 			pScene = static_cast<cScene*>(new cGameScene(this));

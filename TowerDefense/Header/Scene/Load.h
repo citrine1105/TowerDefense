@@ -1,0 +1,12 @@
+﻿#pragma once
+#include "../Scene.h"
+#include "../../Header/ImageResourceContainer.h"
+
+class cLoadScene : public cScene {
+public:
+	cLoadScene(iSceneChanger<eScene> *Changer);
+	void Initialize() override;
+	void Finalize() override;
+	void Update() override;
+	void Draw() override;
+};

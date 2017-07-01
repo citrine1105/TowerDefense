@@ -149,10 +149,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Easing.cpp" />
+    <ClCompile Include="Source\ImageResource.cpp" />
+    <ClCompile Include="Source\ImageResourceContainer.cpp" />
+    <ClCompile Include="Source\Keyboard.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Mouse.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\Scene\Game.cpp" />
+    <ClCompile Include="Source\Scene\Load.cpp" />
+    <ClCompile Include="Source\Scene\Menu.cpp" />
     <ClCompile Include="Source\Scene\Title.cpp" />
     <ClCompile Include="Source\SoundResource.cpp" />
     <ClCompile Include="Source\Sprite.cpp" />
@@ -163,13 +169,18 @@
     <ClInclude Include="Header\Activity.h" />
     <ClInclude Include="Header\Easing.h" />
     <ClInclude Include="Header\ImageResource.h" />
+    <ClInclude Include="Header\ImageResourceContainer.h" />
     <ClInclude Include="Header\Include.h" />
     <ClInclude Include="Header\Initialization.h" />
+    <ClInclude Include="Header\Keyboard.h" />
     <ClInclude Include="Header\Macro.h" />
+    <ClInclude Include="Header\Mouse.h" />
     <ClInclude Include="Header\Scene.h" />
     <ClInclude Include="Header\SceneChanger.h" />
     <ClInclude Include="Header\SceneManager.h" />
     <ClInclude Include="Header\Scene\Game.h" />
+    <ClInclude Include="Header\Scene\Load.h" />
+    <ClInclude Include="Header\Scene\Menu.h" />
     <ClInclude Include="Header\Scene\Title.h" />
     <ClInclude Include="Header\SoundResource.h" />
     <ClInclude Include="Header\Sprite.h" />

@@ -1,8 +1,11 @@
 ﻿#pragma once
 #define PI 3.1415926535897932	// 円周率
-#define CAPTION_STRING _T("TowerDefense")	// キャプションテキスト
+#define CAPTION_STRING _T("Tower Defense")	// キャプションテキスト
 #define VERSION_STRING _T("Beta 1")	// バージョン
-#define DX_ARCHIVE_KEY_STRING _T("TestKey")	// DXアーカイブ展開キー
+#define DX_ARCHIVE_KEY_STRING _T("G8dQ3UK3UPKc")	// DXアーカイブ展開キー
+
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 
 #define RADIAN_TO_DEGREE(value) (PI / 180.0 * value)
 #define DEGREE_TO_RADIAN(value) (value / 180.0 * PI)
