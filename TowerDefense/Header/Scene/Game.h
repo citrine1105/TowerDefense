@@ -2,6 +2,9 @@
 #include "../Scene.h"
 
 class cGameScene : public cScene {
+protected:
+	cSprite mButton[5];
+	cSprite mPauseButton;
 public:
 	cGameScene(iSceneChanger<eScene> *Changer);
 	void Initialize() override;

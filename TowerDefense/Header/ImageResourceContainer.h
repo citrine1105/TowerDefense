@@ -9,6 +9,8 @@ enum eImageIndex {
 	eImage_Character2,
 	eImage_Character3,
 	eImage_Tower,
+	eImage_GameButton,
+	eImage_PauseButton,
 
 	eImage_None
 };

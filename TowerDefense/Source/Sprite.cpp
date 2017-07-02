@@ -48,12 +48,61 @@ void cSprite::GetPosition(double *PositionX, double *PositionY) {
 	}
 }
 
+void cSprite::GetCollisionRange(double *RangeX, double *RangeY) {
+	if (RangeX != nullptr) {
+		*RangeX = mCollisionRangeX;
+	}
+	if (RangeY != nullptr) {
+		*RangeY = mCollisionRangeY;
+	}
+}
+
 cVector2D* cSprite::GetMoveVectorPointer() {
 	return &mMoveVector;
 }
 
 cVector2D* cSprite::GetCollisionVectorPointer() {
 	return &mCollisionVector;
+}
+
+bool cSprite::GetCollisionFlag(cSprite *Sprite) {
+	// 傾きのない矩形同士の判定だけ実装
+	struct tsPoint {
+		double Top;
+		double Bottom;
+		double Left;
+		double Right;
+	};
+
+	tsPoint tPoint[2];
+	double tPosX, tPosY, tRangeX, tRangeY;
+	Sprite->GetPosition(&tPosX, &tPosY);
+	Sprite->GetCollisionRange(&tRangeX, &tRangeY);
+
+	if (mCollisionRangeX <= 0.0 ||
+		mCollisionRangeY <= 0.0 ||
+		tRangeX <= 0.0 ||
+		tRangeY <= 0.0) {
+		return false;
+	}
+
+	tPoint[0].Top = mPositionY - mCollisionRangeY / 2.0;
+	tPoint[0].Bottom = mPositionY + mCollisionRangeY / 2.0;
+	tPoint[0].Left = mPositionX - mCollisionRangeX / 2.0;
+	tPoint[0].Right = mPositionX + mCollisionRangeX / 2.0;
+
+	tPoint[1].Top = tPosY - tRangeY / 2.0;
+	tPoint[1].Bottom = tPosY + tRangeY / 2.0;
+	tPoint[1].Left = tPosX - tRangeX / 2.0;
+	tPoint[1].Right = tPosX + tRangeX / 2.0;
+
+	if ((tPoint[0].Top <= tPoint[1].Bottom && tPoint[0].Bottom >= tPoint[1].Top) &&
+		(tPoint[0].Left <= tPoint[1].Right && tPoint[0].Right >= tPoint[1].Left)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 void cSprite::Initialize() {

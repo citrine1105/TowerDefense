@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "../Scene.h"
-#include "../../Header/ImageResourceContainer.h"
 
 class cLoadScene : public cScene {
 public:

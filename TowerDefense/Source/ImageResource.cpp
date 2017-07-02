@@ -9,16 +9,16 @@ void cImageResource::CreateHandle(const int Num) {
 	}
 }
 
-cImageResource::cImageResource() : pHandle(nullptr) {
+cImageResource::cImageResource() : pHandle(NULL) {
 	this->Initialize();
 }
 
-cImageResource::cImageResource(const TCHAR *FileName) : pHandle(nullptr) {
+cImageResource::cImageResource(const TCHAR *FileName) : pHandle(NULL) {
 	this->Initialize();
 	this->SetPath(FileName);
 }
 
-cImageResource::cImageResource(const TCHAR *FileName, const int TotalNum, const int NumX, const int NumY, const int SizeX, const int SizeY) : pHandle(nullptr) {
+cImageResource::cImageResource(const TCHAR *FileName, const int TotalNum, const int NumX, const int NumY, const int SizeX, const int SizeY) : pHandle(NULL) {
 	this->Initialize();
 	this->SetPath(FileName);
 	this->SetDivisionSize(TotalNum, NumX, NumY, SizeX, SizeY);
@@ -58,7 +58,7 @@ void cImageResource::Load(const TCHAR *FileName, const int TotalNum, const int N
 }
 
 void cImageResource::Delete() {
-	if (pHandle != nullptr) {
+	if (pHandle != NULL) {
 		if (mTotalNum == 1) {
 			DeleteGraph(*pHandle);
 			delete pHandle;
@@ -69,7 +69,7 @@ void cImageResource::Delete() {
 			}
 			delete[] pHandle;
 		}
-		pHandle = nullptr;
+		pHandle = NULL;
 	}
 }
 

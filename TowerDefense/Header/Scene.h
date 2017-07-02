@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Include.h"
 #include "SceneChanger.h"
+#include "ImageResourceContainer.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 
@@ -22,6 +23,8 @@ protected:
 	static cMouse mMouse;		// マウス
 
 	static int mMainFont;
+	static int mGameInfoFont;
+	static int mGameMoneyFont;
 public:
 	cScene(iSceneChanger<eScene> *Changer);
 	virtual ~cScene();

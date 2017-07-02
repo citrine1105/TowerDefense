@@ -9,11 +9,12 @@ void cImageResourceContainer::Initialize() {
 }
 
 void cImageResourceContainer::Finalize() {
-	//for (int i = 0; i < eImageIndex::eImage_None; i++) {
-	//	mImageArray[i].Finalize();
-	//}
-	for (auto i : mImageArray) {
-		i.Finalize();
+	for (int i = 0; i < eImageIndex::eImage_None; i++) {
+		mImageArray[i].Finalize();
 	}
+	//for (auto i : mImageArray) {
+	//	i.Finalize();
+	//}
+	// ªÅŒã1‚Â—]Œv‚Èˆ—‚ð‚·‚é‚©‚çƒ_ƒ
 	mImageArray.clear();
 }

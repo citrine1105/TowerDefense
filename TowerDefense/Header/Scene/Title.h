@@ -4,6 +4,7 @@
 
 class cTitleScene : public cScene {
 private:
+	cSprite mBackFade;
 	cSprite mMessageFade;
 public:
 	cTitleScene(iSceneChanger<eScene> *Changer);
