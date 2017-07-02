@@ -18,6 +18,8 @@
 
 #ifdef _UNICODE
 #define tstring wstring	// Unicode対応の場合、ワイド文字列クラスを使用
+#define to_tstring to_wstring
 #else
 #define tstring string	// Unicode非対応の場合、通常文字列クラスを使用
+#define to_tstring to_string
 #endif	// _UNICODE

@@ -33,7 +33,7 @@ public:
 		return &inst;
 	}
 
-	cImageResource* GetElement(eImageIndex Imdex);
+	cImageResource* GetElement(eImageIndex Index);
 
 	void Initialize() override;
 	void Finalize() override;

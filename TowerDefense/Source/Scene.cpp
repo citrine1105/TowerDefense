@@ -3,10 +3,6 @@
 cKeyboard cScene::mKeyboard;
 cMouse cScene::mMouse;
 
-int cScene::mMainFont;
-int cScene::mGameInfoFont;
-int cScene::mGameMoneyFont;
-
 cScene::cScene(iSceneChanger<eScene> *Changer) {
 	pSceneChanger = Changer;
 }
@@ -20,7 +16,7 @@ void cScene::Initialize() {
 }
 
 void cScene::Finalize() {
-	DeleteFontToHandle(mMainFont);
+
 }
 
 void cScene::Update() {

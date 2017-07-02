@@ -25,6 +25,9 @@ void cGameScene::Finalize() {
 
 void cGameScene::Update() {
 	cScene::Update();
+	for (int i = 0; i < mCharacter.size(); i++) {
+		mCharacter[i].Update();
+	}
 }
 
 void cGameScene::Draw() {
@@ -36,8 +39,7 @@ void cGameScene::Draw() {
 	tMoney = std::to_wstring(114514);
 	tMoney += _T("G");
 
-	DrawExtendGraph(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, cImageResourceContainer::GetInstance()->GetElement(eImage_TitleBackground)->GetHandle(), FALSE);
-	DrawStringToHandle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, _T("800/800"), GetColor(0xFF, 0xFF, 0xFF), mGameInfoFont);
+	//DrawExtendGraph(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, cImageResourceContainer::GetInstance()->GetElement(eImage_TitleBackground)->GetHandle(), FALSE);
 
 	DrawGraph(SCREEN_WIDTH / 6, SCREEN_HEIGHT / 2, cImageResourceContainer::GetInstance()->GetElement(eImage_Tower)->GetHandle(), TRUE);
 
@@ -46,6 +48,10 @@ void cGameScene::Draw() {
 		if (mButton[i].GetCollisionFlag(mMouse.GetSprite())) {
 			if (mMouse.GetInputState(MOUSE_INPUT_LEFT) == 1) {
 				SetDrawBlendMode(DX_BLENDMODE_ALPHA, 64);
+				cCharacter *tCh = new cCharacter;
+				tCh->SetLife(500);
+				mCharacter.push_back(*tCh);
+				delete tCh;
 			}
 			else {
 				SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
@@ -59,8 +65,11 @@ void cGameScene::Draw() {
 	mPauseButton.GetPosition(&tPosX, &tPosY);
 	DrawGraph(static_cast<int>(tPosX - 32.0), static_cast<int>(tPosY - 32.0), cImageResourceContainer::GetInstance()->GetElement(eImage_PauseButton)->GetHandle(), TRUE);
 
-	DrawStringToHandle(36 + 64 + 32, 24, tAreaName.c_str(), GetColor(0xFF, 0xFF, 0xFF), mGameMoneyFont, GetColor(0x77, 0x4D, 0x28));
-	DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(tMoney.c_str(), tMoney.size(), mGameMoneyFont) - 36, 24, tMoney.c_str(), GetColor(0xF2, 0xC6, 0x37), mGameMoneyFont, GetColor(0x60, 0x39, 0x16));
+	DrawStringToHandle(36 + 64 + 32, 24 + 6, tAreaName.c_str(), GetColor(0xFF, 0xFF, 0xFF), cFontContainer::GetInstance()->GetElement(eFont_GameMoneyFont), GetColor(0x77, 0x4D, 0x28));
+	DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(tMoney.c_str(), tMoney.size(), cFontContainer::GetInstance()->GetElement(eFont_GameMoneyFont)) - 36, 24, tMoney.c_str(), GetColor(0xF2, 0xCD, 0x54), cFontContainer::GetInstance()->GetElement(eFont_GameMoneyFont), GetColor(0x60, 0x39, 0x16));
 
+	for (int i = 0; i < mCharacter.size(); i++) {
+		mCharacter[i].Draw();
+	}
 	//mMouse.Draw();
 }

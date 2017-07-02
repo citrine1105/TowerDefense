@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Easing.cpp" />
+    <ClCompile Include="Source\FontContainer.cpp" />
     <ClCompile Include="Source\ImageResource.cpp" />
     <ClCompile Include="Source\ImageResourceContainer.cpp" />
     <ClCompile Include="Source\Keyboard.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="Source\Mouse.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
+    <ClCompile Include="Source\Character.cpp" />
     <ClCompile Include="Source\Scene\Game.cpp" />
     <ClCompile Include="Source\Scene\Load.cpp" />
     <ClCompile Include="Source\Scene\Menu.cpp" />
@@ -167,7 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Activity.h" />
+    <ClInclude Include="Header\Character.h" />
     <ClInclude Include="Header\Easing.h" />
+    <ClInclude Include="Header\FontContainer.h" />
     <ClInclude Include="Header\ImageResource.h" />
     <ClInclude Include="Header\ImageResourceContainer.h" />
     <ClInclude Include="Header\Include.h" />

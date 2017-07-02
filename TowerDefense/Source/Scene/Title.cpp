@@ -47,11 +47,11 @@ void cTitleScene::Draw() {
 	DrawExtendGraph(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, cImageResourceContainer::GetInstance()->GetElement(eImage_TitleBackground)->GetHandle(), FALSE);
 
 	mMessageFade.GetPosition(&tValue, nullptr);
-	DrawStringToHandle(SCREEN_WIDTH / 2 - GetDrawStringWidthToHandle(_T("Tower Defense"), _tcslen(_T("Tower Defense")), mMainFont) / 2, SCREEN_HEIGHT / 5 * 2, _T("Tower Defense\n(タイトルは画像に差し替えといて)"), GetColor(0xFF, 0xFF, 0xFF), mMainFont);
+	DrawStringToHandle(SCREEN_WIDTH / 2 - GetDrawStringWidthToHandle(_T("Tower Defense"), _tcslen(_T("Tower Defense")), cFontContainer::GetInstance()->GetElement(eFont_MainFont)) / 2, SCREEN_HEIGHT / 5 * 2, _T("Tower Defense\n(タイトルは画像に差し替えといて)"), GetColor(0xFF, 0xFF, 0xFF), cFontContainer::GetInstance()->GetElement(eFont_MainFont));
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, static_cast<int>(tValue));
-	DrawStringToHandle(SCREEN_WIDTH / 2 - GetDrawStringWidthToHandle(_T("Press [Enter] Key or Mouse Click"), _tcslen(_T("Press [Enter] Key or Mouse Click")), mMainFont) / 2, SCREEN_HEIGHT / 5 * 4, _T("Press [Enter] Key or Mouse Click"), GetColor(0xFF, 0xFF, 0xFF), mMainFont);
+	DrawStringToHandle(SCREEN_WIDTH / 2 - GetDrawStringWidthToHandle(_T("Press [Enter] Key or Mouse Click"), _tcslen(_T("Press [Enter] Key or Mouse Click")), cFontContainer::GetInstance()->GetElement(eFont_MainFont)) / 2, SCREEN_HEIGHT / 5 * 4, _T("Press [Enter] Key or Mouse Click"), GetColor(0xFF, 0xFF, 0xFF), cFontContainer::GetInstance()->GetElement(eFont_MainFont));
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 255);
-	DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(tVersion.c_str(), tVersion.size(), mMainFont) - 16, SCREEN_HEIGHT - 40, tVersion.c_str(), GetColor(0xFF, 0xFF, 0xFF), mMainFont);
+	DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(tVersion.c_str(), tVersion.size(), cFontContainer::GetInstance()->GetElement(eFont_MainFont)) - 16, SCREEN_HEIGHT - 40, tVersion.c_str(), GetColor(0xFF, 0xFF, 0xFF), cFontContainer::GetInstance()->GetElement(eFont_MainFont));
 
 	mBackFade.GetPosition(&tValue, nullptr);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, static_cast<int>(tValue));

@@ -5,9 +5,9 @@ cLoadScene::cLoadScene(iSceneChanger<eScene> *Changer) : cScene(Changer) {
 }
 
 void cLoadScene::Initialize() {
-	mMainFont = CreateFontToHandle(_T("ＭＳ Ｐ明朝"), SCREEN_HEIGHT / 30, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
-	mGameInfoFont = CreateFontToHandle(_T("ＭＳ Ｐ明朝"), SCREEN_HEIGHT / 48, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
-	mGameMoneyFont = CreateFontToHandle(_T("ＭＳ Ｐ明朝"), SCREEN_HEIGHT / 16, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
+	cFontContainer::GetInstance()->SetElement(eFont_MainFont, CreateFontToHandle(_T("ＭＳ Ｐ明朝"), SCREEN_HEIGHT / 30, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4));
+	cFontContainer::GetInstance()->SetElement(eFont_GameInfoFont, CreateFontToHandle(_T("ＭＳ Ｐ明朝"), SCREEN_HEIGHT / 48, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4));
+	cFontContainer::GetInstance()->SetElement(eFont_GameMoneyFont, CreateFontToHandle(_T("ＭＳ Ｐ明朝"), SCREEN_HEIGHT / 16, 0, DX_FONTTYPE_ANTIALIASING_EDGE_4X4));
 
 	cImageResourceContainer::GetInstance()->GetElement(eImage_TitleBackground)->Load(_T("./Data/Image/1080p_dummy.png"));
 	cImageResourceContainer::GetInstance()->GetElement(eImage_Tower)->Load(_T("./Data/Image/Game/tower.png"));
@@ -30,7 +30,7 @@ void cLoadScene::Update() {
 }
 
 void cLoadScene::Draw() {
-	if (CheckHandleASyncLoad(mMainFont) == FALSE) {
-		DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(_T("Loading"), _tcslen(_T("Loading")), mMainFont) - 16, SCREEN_HEIGHT - SCREEN_HEIGHT / 30 - 16, _T("Loading"), GetColor(0xFF, 0xFF, 0xFF), mMainFont);
+	if (CheckHandleASyncLoad(cFontContainer::GetInstance()->GetElement(eFont_MainFont)) == FALSE) {
+		DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(_T("Loading"), _tcslen(_T("Loading")), cFontContainer::GetInstance()->GetElement(eFont_MainFont)) - 16, SCREEN_HEIGHT - SCREEN_HEIGHT / 30 - 16, _T("Loading"), GetColor(0xFF, 0xFF, 0xFF), cFontContainer::GetInstance()->GetElement(eFont_MainFont));
 	}
 }

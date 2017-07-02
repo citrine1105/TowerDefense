@@ -3,6 +3,7 @@
 #include "Vector.h"
 #include "Timer.h"
 #include "Easing.h"
+#include "ImageResourceContainer.h"
 
 enum eCollisionType {
 	eCollision_Rectangle,	// 矩形

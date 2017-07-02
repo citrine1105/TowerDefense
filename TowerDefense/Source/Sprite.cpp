@@ -11,7 +11,9 @@ cSprite::~cSprite() {
 void cSprite::Move() {
 	double tPositionX, tPositionY;
 	mMoveVector.GetEndPoint(&tPositionX, &tPositionY);
-	this->MoveToPoint(tPositionX, tPositionY, 1);
+	//this->MoveToPoint(tPositionX, tPositionY, 1);
+	mPositionX += tPositionX;
+	mPositionY += tPositionY;
 }
 
 void cSprite::MoveToPoint(const double PositionX, const double PositionY, const int MoveTime, const eEasingType MoveType, const eEasingFunction EasingFunction) {
