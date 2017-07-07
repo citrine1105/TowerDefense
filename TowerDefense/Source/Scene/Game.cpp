@@ -34,20 +34,41 @@ void cGameScene::Finalize() {
 
 void cGameScene::Update() {
 	auto tPlayerCharacterIterator = mPlayerCharacter.begin();
+	auto tEnemyCharacterIterator = mEnemyCharacter.begin();
+	int i;
 	cScene::Update();
-	for (int i = 0; i < mPlayerCharacter.size(); i++) {
-		mPlayerCharacter[i].Update();
+	//for (int i = 0; i < mPlayerCharacter.size(); i++) {
+	//	mPlayerCharacter[i].Update();
+	//}
+	//for (int i = 0; i < mEnemyCharacter.size(); i++) {
+	//	mEnemyCharacter[i].Update();
+	//}
+	for (auto& i : mPlayerCharacter) {
+		i.Update();
 	}
-	for (int i = 0; i < mEnemyCharacter.size(); i++) {
-		mEnemyCharacter[i].Update();
+	for (auto& i : mEnemyCharacter) {
+		i.Update();
 	}
 
-	for (int i = 0; i < mPlayerCharacter.size(); i++) {
-		if (!mPlayerCharacter[i].GetActiveFlag()) {
-			mPlayerCharacter.erase(tPlayerCharacterIterator);
+	i = 0;
+	while (i < mPlayerCharacter.size()) {
+		if (mPlayerCharacter[i].GetActiveFlag()) {
+			++tPlayerCharacterIterator;
+			++i;
 		}
 		else {
-			tPlayerCharacterIterator++;
+			tPlayerCharacterIterator = mPlayerCharacter.erase(tPlayerCharacterIterator);
+		}
+	}
+
+	i = 0;
+	while (i < mEnemyCharacter.size()) {
+		if (mEnemyCharacter[i].GetActiveFlag()) {
+			++tEnemyCharacterIterator;
+			++i;
+		}
+		else {
+			tEnemyCharacterIterator = mEnemyCharacter.erase(tEnemyCharacterIterator);
 		}
 	}
 
@@ -61,18 +82,16 @@ void cGameScene::Draw() {
 	std::tstring tAreaName;
 	std::tstring tMoney;
 
-	tAreaName = _T("エリア名も書けるぞ");
-	tMoney = std::to_wstring(114514);
+	tAreaName = _T("進捗ダメです");
+	tMoney = std::to_tstring(8101919);
 	tMoney += _T("G");
 
 	DrawExtendGraph(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, cImageResourceContainer::GetInstance()->GetElement(eImage_GameBackBase)->GetHandle(), FALSE);
 	for (int i = 0; i < 24; i++) {
 		mTree[i].GetPosition(&tPosX, &tPosY);
-		//mTree[i].Draw();
 		DrawRotaGraph(tPosX, tPosY, 1.0, 0.0, cImageResourceContainer::GetInstance()->GetElement(eImage_GameBackTree)->GetHandle(), TRUE);
 	}
 
-	//DrawGraph(SCREEN_WIDTH / 6, SCREEN_HEIGHT / 2, cImageResourceContainer::GetInstance()->GetElement(eImage_Tower)->GetHandle(), TRUE);
 	mPlayerTower.Draw();
 	mEnemyTower.Draw();
 
@@ -110,11 +129,17 @@ void cGameScene::Draw() {
 	DrawStringToHandle(36 + 64 + 32, 24 + 6, tAreaName.c_str(), GetColor(0xFF, 0xFF, 0xFF), cFontContainer::GetInstance()->GetElement(eFont_GameMoneyFont), GetColor(0x77, 0x4D, 0x28));
 	DrawStringToHandle(SCREEN_WIDTH - GetDrawStringWidthToHandle(tMoney.c_str(), tMoney.size(), cFontContainer::GetInstance()->GetElement(eFont_GameMoneyFont)) - 36, 24, tMoney.c_str(), GetColor(0xF2, 0xCD, 0x54), cFontContainer::GetInstance()->GetElement(eFont_GameMoneyFont), GetColor(0x60, 0x39, 0x16));
 
-	for (int i = 0; i < mEnemyCharacter.size(); i++) {
-		mEnemyCharacter[i].Draw();
+	//for (int i = 0; i < mEnemyCharacter.size(); i++) {
+	//	mEnemyCharacter[i].Draw();
+	//}
+	//for (int i = 0; i < mPlayerCharacter.size(); i++) {
+	//	mPlayerCharacter[i].Draw();
+	//}
+	for (auto& i : mEnemyCharacter) {
+		i.Draw();
 	}
-	for (int i = 0; i < mPlayerCharacter.size(); i++) {
-		mPlayerCharacter[i].Draw();
+	for (auto& i : mPlayerCharacter) {
+		i.Draw();
 	}
 	//mMouse.Draw();
 }
