@@ -14,7 +14,11 @@ void cMenuScene::Finalize() {
 }
 
 void cMenuScene::Update() {
+	cScene::Update();
 	mColumn.Update();
+	if (mKeyboard.GetInputState(KEY_INPUT_Z) == 60) {
+		pSceneChanger->ChangeScene(eScene_Game);
+	}
 }
 
 void cMenuScene::Draw() {

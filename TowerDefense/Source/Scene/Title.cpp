@@ -38,7 +38,7 @@ void cTitleScene::Update() {
 
 	if (mKeyboard.GetInputState(KEY_INPUT_RETURN) == 1 ||
 		mMouse.GetInputState(MOUSE_INPUT_LEFT) == 1) {
-		pSceneChanger->ChangeScene(eScene_Game);	// 本番はメニュー画面へ移行
+		pSceneChanger->ChangeScene(eScene_Menu);
 	}
 }
 
