@@ -2,21 +2,35 @@
 #include "Sprite.h"
 #include "FontContainer.h"
 
+enum eCharacterType {
+	eChara_Type1,
+	eChara_Type2,
+	eChara_Type3,
+
+	eChara_None
+};
+
 class cCharacter : public cSprite {
 protected:
 	cTimer mAnimationTimer;
+	eCharacterType mType;
 	int mLife;
 	int mMaxLife;
 	int mAttack;
 	int mDefense;
+	double mSpeed;
+	bool fActive;
 public:
 	cCharacter();
 	~cCharacter();
 
-	void SetLife(const int Life);
+	void Damage(const int Damage);
+	int GetLife();
+	bool GetActiveFlag();
 
-	void Initialize() override;
+	virtual void Initialize() override;
+	virtual void Initialize(eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed);
 	void Finalize() override;
 	void Update() override;
-	void Draw() override;
+	virtual void Draw() override;
 };

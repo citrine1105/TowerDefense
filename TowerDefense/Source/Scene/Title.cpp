@@ -9,6 +9,8 @@ void cTitleScene::Initialize() {
 	mMessageFade.SetPosition(0.0, 0.0);
 
 	mBackFade.MoveToPoint(0.0, 0.0, 120, eEasing_Sine);
+
+	//mMoveObj.SetPosition(640, 360);
 }
 
 void cTitleScene::Finalize() {
@@ -19,6 +21,7 @@ void cTitleScene::Update() {
 	cScene::Update();
 	mBackFade.Update();
 	mMessageFade.Update();
+	//mMoveObj.Update();
 	double tValue;
 	mMessageFade.GetPosition(&tValue, nullptr);
 
@@ -28,6 +31,10 @@ void cTitleScene::Update() {
 	else if (tValue >= 255.0) {
 		mMessageFade.MoveToPoint(0.0, 0.0, 45, eEasing_Sine);
 	}
+
+	//if (mKeyboard.GetInputState(KEY_INPUT_SPACE) == 1) {
+	//	mMoveObj.MoveToPoint(static_cast<double>(GetRand(SCREEN_WIDTH - 1)), static_cast<double>(GetRand(SCREEN_HEIGHT - 1)), 60, eEasingType::eEasing_Quart);
+	//}
 
 	if (mKeyboard.GetInputState(KEY_INPUT_RETURN) == 1 ||
 		mMouse.GetInputState(MOUSE_INPUT_LEFT) == 1) {
@@ -40,6 +47,9 @@ void cTitleScene::Draw() {
 	//cScene::Draw();
 	double tValue;
 	std::tstring tVersion;	// バージョン情報
+
+	//double tX, tY;
+	//mMoveObj.GetPosition(&tX, &tY);
 
 	tVersion = _T("Ver ");
 	tVersion += VERSION_STRING;
@@ -57,4 +67,6 @@ void cTitleScene::Draw() {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, static_cast<int>(tValue));
 	DrawBox(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, GetColor(0x00, 0x00, 0x00), TRUE);	// フェード用
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 255);
+
+	//DrawRotaGraph(tX, tY, 1.0, 0.0, cImageResourceContainer::GetInstance()->GetElement(eImage_Tower)->GetHandle(), TRUE);
 }

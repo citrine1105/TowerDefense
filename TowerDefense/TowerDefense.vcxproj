@@ -149,12 +149,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Easing.cpp" />
+    <ClCompile Include="Source\EnemyCharacter.cpp" />
+    <ClCompile Include="Source\EnemyTower.cpp" />
     <ClCompile Include="Source\FontContainer.cpp" />
     <ClCompile Include="Source\ImageResource.cpp" />
     <ClCompile Include="Source\ImageResourceContainer.cpp" />
     <ClCompile Include="Source\Keyboard.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Mouse.cpp" />
+    <ClCompile Include="Source\PlayerCharacter.cpp" />
+    <ClCompile Include="Source\PlayerTower.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\Character.cpp" />
@@ -165,12 +169,15 @@
     <ClCompile Include="Source\SoundResource.cpp" />
     <ClCompile Include="Source\Sprite.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
+    <ClCompile Include="Source\Tower.cpp" />
     <ClCompile Include="Source\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Activity.h" />
     <ClInclude Include="Header\Character.h" />
     <ClInclude Include="Header\Easing.h" />
+    <ClInclude Include="Header\EnemyCharacter.h" />
+    <ClInclude Include="Header\EnemyTower.h" />
     <ClInclude Include="Header\FontContainer.h" />
     <ClInclude Include="Header\ImageResource.h" />
     <ClInclude Include="Header\ImageResourceContainer.h" />
@@ -179,6 +186,8 @@
     <ClInclude Include="Header\Keyboard.h" />
     <ClInclude Include="Header\Macro.h" />
     <ClInclude Include="Header\Mouse.h" />
+    <ClInclude Include="Header\PlayerCharacter.h" />
+    <ClInclude Include="Header\PlayerTower.h" />
     <ClInclude Include="Header\Scene.h" />
     <ClInclude Include="Header\SceneChanger.h" />
     <ClInclude Include="Header\SceneManager.h" />
@@ -189,6 +198,7 @@
     <ClInclude Include="Header\SoundResource.h" />
     <ClInclude Include="Header\Sprite.h" />
     <ClInclude Include="Header\Timer.h" />
+    <ClInclude Include="Header\Tower.h" />
     <ClInclude Include="Header\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

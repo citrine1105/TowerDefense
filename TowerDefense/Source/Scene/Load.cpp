@@ -11,9 +11,12 @@ void cLoadScene::Initialize() {
 
 	cImageResourceContainer::GetInstance()->GetElement(eImage_TitleBackground)->Load(_T("./Data/Image/1080p_dummy.png"));
 	cImageResourceContainer::GetInstance()->GetElement(eImage_Tower)->Load(_T("./Data/Image/Game/tower.png"));
-	cImageResourceContainer::GetInstance()->GetElement(eImage_Character1)->Load(_T("./Data/Image/Game/chara1.png"), 2, 2, 1, 96, 96);
-	cImageResourceContainer::GetInstance()->GetElement(eImage_Character2)->Load(_T("./Data/Image/Game/chara1.png"), 2, 2, 1, 96, 96);
-	cImageResourceContainer::GetInstance()->GetElement(eImage_Character3)->Load(_T("./Data/Image/Game/chara1.png"), 2, 2, 1, 96, 96);
+	cImageResourceContainer::GetInstance()->GetElement(eImage_GameBackBase)->Load(_T("./Data/Image/Background/base.png"));
+	cImageResourceContainer::GetInstance()->GetElement(eImage_GameBackCloud)->Load(_T("./Data/Image/Background/clouds.png"));
+	cImageResourceContainer::GetInstance()->GetElement(eImage_GameBackTree)->Load(_T("./Data/Image/Background/tree.png"));
+	cImageResourceContainer::GetInstance()->GetElement(eImage_Character1)->Load(_T("./Data/Image/Game/chara1.png"), 2, 2, 1, 64, 64);
+	cImageResourceContainer::GetInstance()->GetElement(eImage_Character2)->Load(_T("./Data/Image/Game/chara1.png"), 2, 2, 1, 64, 64);
+	cImageResourceContainer::GetInstance()->GetElement(eImage_Character3)->Load(_T("./Data/Image/Game/chara1.png"), 2, 2, 1, 64, 64);
 	cImageResourceContainer::GetInstance()->GetElement(eImage_GameButton)->Load(_T("./Data/Image/Game/button.png"));
 	cImageResourceContainer::GetInstance()->GetElement(eImage_PauseButton)->Load(_T("./Data/Image/Game/pause.png"));
 }
