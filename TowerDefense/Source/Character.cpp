@@ -1,6 +1,6 @@
 ﻿#include "../Header/Character.h"
 
-cCharacter::cCharacter() {
+cCharacter::cCharacter() : pTargetCharacter(nullptr) {
 	this->Initialize();
 }
 
@@ -9,10 +9,27 @@ cCharacter::~cCharacter() {
 }
 
 void cCharacter::Damage(const int Damage) {
-	mLife -= Damage;
-	if (mLife < 0) {
-		mLife = 0;
+	if (Damage - mDefense <= 0) {	// 防御力がダメージ量を上回る場合
+		mLife -= 1;
 	}
+	else {
+		mLife -= Damage - mDefense;	// ダメージ量-防御力
+	}
+	if (mLife < 0) {
+		mLife = 0;	// 負数にならない
+	}
+
+	if (mLife <= 0) {	// 体力が0になったら
+		fActive = false;		// 登録解除
+	}
+}
+
+void cCharacter::SetTarget(cCharacter *Character) {
+	pTargetCharacter = Character;
+}
+
+cCharacter* cCharacter::GetTarget() {
+	return pTargetCharacter;
 }
 
 int cCharacter::GetLife() {
@@ -43,7 +60,7 @@ void cCharacter::Initialize(eCharacterType Type, const int Life, const int Attac
 	mDefense = Defense;
 	mSpeed = Speed;
 
-	this->SetCollisionRange(64.0, 64.0);
+	this->SetCollisionRange(16.0, 64.0);
 
 	fActive = true;
 }
@@ -61,9 +78,17 @@ void cCharacter::Finalize() {
 void cCharacter::Update() {
 	cSprite::Update();
 	mAnimationTimer.Update();
-	Move();
+	if (pTargetCharacter == nullptr) {
+		Move();
+	}
+	else {
+		pTargetCharacter->Damage(mAttack);
+		if (pTargetCharacter->GetLife() <= 0) {
+			this->SetTarget(nullptr);
+		}
+	}
 
-	if (mPositionX < 0.0 || mPositionX > static_cast<double>(SCREEN_WIDTH)) {
+	if (mPositionX < 0.0 || mPositionX > static_cast<double>(SCREEN_WIDTH)) {	// 画面外に到達した場合
 		fActive = false;
 	}
 }

@@ -14,6 +14,7 @@ class cCharacter : public cSprite {
 protected:
 	cTimer mAnimationTimer;
 	eCharacterType mType;
+	cCharacter *pTargetCharacter;
 	int mLife;
 	int mMaxLife;
 	int mAttack;
@@ -25,6 +26,8 @@ public:
 	~cCharacter();
 
 	void Damage(const int Damage);
+	void SetTarget(cCharacter *Character);
+	cCharacter* GetTarget();
 	int GetLife();
 	bool GetActiveFlag();
 

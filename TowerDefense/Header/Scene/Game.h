@@ -12,8 +12,8 @@ protected:
 
 	cSprite mTree[24];
 
-	std::vector<cPlayerCharacter> mPlayerCharacter;
-	std::vector<cEnemyCharacter> mEnemyCharacter;
+	std::list<cPlayerCharacter> mPlayerCharacter;
+	std::list<cEnemyCharacter> mEnemyCharacter;
 	cPlayerTower mPlayerTower;
 	cEnemyTower mEnemyTower;
 public:

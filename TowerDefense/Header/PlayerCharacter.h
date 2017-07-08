@@ -1,12 +1,13 @@
 ﻿#pragma once
 #include "Character.h"
+#include "EnemyCharacter.h"
 
 class cPlayerCharacter : public cCharacter {
-protected:
-	cCharacter *pTargetCharacter;
 public:
 	cPlayerCharacter();
 	~cPlayerCharacter();
+
+	//void SetTarget(cEnemyCharacter *Character);
 
 	void Initialize() override;
 	void Initialize(const eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed);

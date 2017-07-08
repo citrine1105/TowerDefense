@@ -8,39 +8,14 @@ cTower::~cTower() {
 	this->Finalize();
 }
 
-void cTower::Damage(const int Damage) {
-	mLife -= Damage;
-	if (mLife < 0) {
-		mLife = 0;
-	}
-}
-
 void cTower::SetLife(const int Life) {
-	if (Life > 0) {
-		mMaxLife = Life;
-		mLife = mMaxLife;
-	}
-}
-
-int cTower::GetLife() {
-	return mLife;
+	mMaxLife = Life;
+	mLife = mMaxLife;
 }
 
 void cTower::Initialize() {
-	mLife = 1;
-	mMaxLife = 1;
-	//mDefense = 1;
-	this->SetCollisionRange(96.0, 96.0);
-}
-
-void cTower::Finalize() {
-	mLife = 0;
-	mMaxLife = 0;
-	//mDefense = 0;
-}
-
-void cTower::Update() {
-
+	cCharacter::Initialize(eChara_Type1, 1, 0, 0, 0.0);
+	this->SetCollisionRange(48.0, 96.0);
 }
 
 void cTower::Draw() {

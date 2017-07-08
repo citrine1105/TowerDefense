@@ -1,22 +1,13 @@
 ﻿#pragma once
-#include "Sprite.h"
-#include "FontContainer.h"
+#include "Character.h"
 
-class cTower : public cSprite {
-protected:
-	int mLife;
-	int mMaxLife;
-	//int mDefense;
+class cTower : public cCharacter {
 public:
 	cTower();
 	~cTower();
 
-	void Damage(const int Damage);
 	void SetLife(const int Life);
-	int GetLife();
 
-	void Initialize() override;
-	void Finalize() override;
-	void Update() override;
+	virtual void Initialize() override;
 	virtual void Draw() override;
 };
