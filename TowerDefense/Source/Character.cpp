@@ -19,13 +19,20 @@ void cCharacter::Damage(const int Damage) {
 		mLife = 0;	// 負数にならない
 	}
 
-	if (mLife <= 0) {	// 体力が0になったら
-		fActive = false;		// 登録解除
-	}
+	//if (mLife <= 0) {	// 体力が0になったら
+	//	fActive = false;		// 登録解除
+	//}
 }
 
 void cCharacter::SetTarget(cCharacter *Character) {
 	pTargetCharacter = Character;
+	if (Character != nullptr) {
+		mAttackDelayTimer.Start();
+	}
+	else {
+		mAttackDelayTimer.Stop();
+		mAttackDelayTimer.Reset();
+	}
 }
 
 cCharacter* cCharacter::GetTarget() {
@@ -41,13 +48,11 @@ bool cCharacter::GetActiveFlag() {
 }
 
 void cCharacter::Initialize() {
-	this->Initialize(eChara_Type1, 1, 1, 1, 1.0);
+	this->Initialize(eChara_Type1, 1, 1, 1, 1.0, 1);
 }
 
-void cCharacter::Initialize(eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed) {
+void cCharacter::Initialize(eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed, const int AttackInterval) {
 	cSprite::Initialize();
-	mAnimationTimer.Initialize();
-	mAnimationTimer.SetCountMode(eCountMode_CountUp);
 	mAnimationTimer.Start();
 
 	mType = Type;
@@ -59,6 +64,7 @@ void cCharacter::Initialize(eCharacterType Type, const int Life, const int Attac
 	mAttack = Attack;
 	mDefense = Defense;
 	mSpeed = Speed;
+	mAttackInterval = AttackInterval;
 
 	this->SetCollisionRange(16.0, 64.0);
 
@@ -78,14 +84,29 @@ void cCharacter::Finalize() {
 void cCharacter::Update() {
 	cSprite::Update();
 	mAnimationTimer.Update();
+	mDeadTimer.Update();
 	if (pTargetCharacter == nullptr) {
-		Move();
+		if (mLife > 0) {
+			Move();
+		}
 	}
 	else {
-		pTargetCharacter->Damage(mAttack);
+		mAttackDelayTimer.Update();
+		if (mAttackDelayTimer.GetValue() >= mAttackInterval) {
+			pTargetCharacter->Damage(mAttack);
+			mAttackDelayTimer.Reset();
+		}
 		if (pTargetCharacter->GetLife() <= 0) {
 			this->SetTarget(nullptr);
 		}
+	}
+
+	if (mLife <= 0 && !mDeadTimer.GetActiveFlag()) {
+		mDeadTimer.Start();
+	}
+
+	if (mDeadTimer.GetValue() >= 15) {
+		fActive = false;
 	}
 
 	if (mPositionX < 0.0 || mPositionX > static_cast<double>(SCREEN_WIDTH)) {	// 画面外に到達した場合

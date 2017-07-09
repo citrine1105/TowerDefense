@@ -14,7 +14,7 @@ void cTower::SetLife(const int Life) {
 }
 
 void cTower::Initialize() {
-	cCharacter::Initialize(eChara_Type1, 1, 0, 0, 0.0);
+	cCharacter::Initialize(eChara_Type1, 1, 0, 0, 0.0, 1);
 	this->SetCollisionRange(48.0, 96.0);
 }
 

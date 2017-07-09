@@ -13,6 +13,8 @@ enum eCharacterType {
 class cCharacter : public cSprite {
 protected:
 	cTimer mAnimationTimer;
+	cTimer mAttackDelayTimer;
+	cTimer mDeadTimer;
 	eCharacterType mType;
 	cCharacter *pTargetCharacter;
 	int mLife;
@@ -20,6 +22,7 @@ protected:
 	int mAttack;
 	int mDefense;
 	double mSpeed;
+	int mAttackInterval;
 	bool fActive;
 public:
 	cCharacter();
@@ -32,7 +35,7 @@ public:
 	bool GetActiveFlag();
 
 	virtual void Initialize() override;
-	virtual void Initialize(eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed);
+	virtual void Initialize(eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed, const int AttackInverval);
 	void Finalize() override;
 	void Update() override;
 	virtual void Draw() override;

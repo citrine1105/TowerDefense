@@ -10,6 +10,6 @@ public:
 	//void SetTarget(cEnemyCharacter *Character);
 
 	void Initialize() override;
-	void Initialize(const eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed);
+	void Initialize(const eCharacterType Type, const int Life, const int Attack, const int Defense, const double Speed, const int AttackInverval) override;
 	void Draw() override;
 };
