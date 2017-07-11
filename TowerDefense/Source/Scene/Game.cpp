@@ -127,7 +127,7 @@ void cGameScene::Draw() {
 	std::tstring tAreaName;
 	std::tstring tMoney;
 
-	tAreaName = _T("進捗ダメです");
+	tAreaName = _T("ㄘんㄘん！");
 	tMoney = std::to_tstring(8101919);
 	tMoney += _T("G");
 
